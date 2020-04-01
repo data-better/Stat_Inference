@@ -1,4 +1,4 @@
-library(stats)
+library(stats4)
 
 exp_mle = function(n, lambda1){
 
