@@ -1,0 +1,81 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: section start ]
+이항분포의 포아송분포 근사
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ load("distrib") $ load("orthopoly.lisp") $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pdf_b : pdf_binomial(x, n, λ/n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(pdf_b*%e^(t*x), x, 0, inf);ev(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mgf_b: ((1-λ/n)+λ/n*%e^t);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mgf_b(n):=product(mgf_b,i,1,n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+limit(mgf_b(n), n, inf);
+
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: answer  start ] */
+negative
+;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: answer  start ] */
+positive;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: section start ]
+최대가능도추정법: 지수분포
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+assume(x[i] >0, λ>0) $
+jfe : product(pdf_exp(x[i],λ),i,1,n);
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: answer  start ] */
+negative
+;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: answer  start ] */
+positive;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lle: log(jfe), logexpand=all;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(diff(lle,λ), λ), simpsum;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+diff(lle, λ,2) ;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

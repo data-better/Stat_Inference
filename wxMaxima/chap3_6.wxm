@@ -1,0 +1,70 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: section start ]
+. 정규분포 
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load("distrib") $ 
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mgf_norm(t) := %e^(μ*t+σ^2 * t^2 /2);
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: answer  start ] */
+negative
+;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: answer  start ] */
+positive;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+product(mgf_norm(t), i, 1,n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+포아송분포
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load("distrib") $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+assume(λ>0) $  
+mgf_pois(t) := %e^(λ*(%e^t -1));
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: answer  start ] */
+negative
+;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: answer  start ] */
+positive;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+product(mgf_pois(t), i, 1, n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
