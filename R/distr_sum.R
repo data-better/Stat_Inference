@@ -55,26 +55,3 @@ if (distr=="Norm") {dist1(Norm(1,1),n, type, stat)
 } else if(distr=="Binom") {dist1(Binom(1,0.5),n, type, stat)
 } else {dist1(Pois(1),n, type, stat)
 })
-
-##################################################################
-library(distrTeach)
-manipulate(
-type = picker("CLT", "LLN"),          
-distr = picker("Norm", "Exp", "Chisq", "Binom", "Pois"), 
-n = slider(1, 100, step=1, initial=2, label="sample size"),
-if (distr=="Norm") {illustrateCLT.tcl(Norm(), k=n, distr)
-} else if(distr=="Exp") {illustrateCLT.tcl(Exp(), k=n, distr)
-} else if(distr=="Chisq") {illustrateCLT.tcl(Chisq(), k=n, distr)
-} else if(distr=="Binom") {illustrateCLT.tcl(Binom(), k=n, distr)
-} else {illustrateCLT.tcl(Pois(), k=n, distr)
-})        
-
-library(distrTeach)
-manipulate(
-        distr = picker("Norm", "Exp", "Chisq", "Binom", "Pois"), 
-        if (distr=="Norm") {illustrateLLN(Norm(), main="대수의 법칙 : %C(%P)", step=10)
-        } else if(distr=="Exp") {illustrateLLN(Exp(), main="대수의 법칙 : %C(%P)")
-        } else if(distr=="Chisq") {illustrateLLN(Chisq(), main="대수의 법칙 : %C(%P)")
-        } else if(distr=="Binom") {illustrateLLN(Binom(), main="대수의 법칙 : %C(%P)")
-        } else {illustrateLLN(Pois(), main="대수의 법칙 : %C(%P)")
-        })      
